@@ -4,78 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fahmi Studio Portfolio</title>
-    <link rel="stylesheet" href="style.css">
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
-            color: #333;
+            transition: background-color 0.5s;
         }
         header {
-            background-color: #282c34;
+            background-color: #4a90e2;
             color: white;
             padding: 20px;
             text-align: center;
+            transition: background-color 0.5s;
         }
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
+        nav a {
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        nav a:hover {
+            background-color: #357ab8;
+            transform: scale(1.05);
+        }
+        .portfolio {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
         }
         .portfolio-item {
-            float: left;
-            width: 30%;
-            margin: 1.66%;
-            background: white;
+            margin: 10px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             transition: transform 0.3s;
         }
         .portfolio-item:hover {
-            transform: scale(1.05);
-        }
-        .portfolio-item img {
-            width: 100%;
-        }
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #282c34;
-            color: white;
-            position: relative;
-            bottom: 0;
-            width: 100%;
+            transform: translateY(-5px);
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to Fahmi Studio</h1>
-        <p>Your go-to place for modern designs and web solutions</p>
+        <h1>Welcome to Fahmi Studio Portfolio</h1>
+        <nav>
+            <a href="https://parfume.my.id">Parfume</a>
+            <a href="https://laundriaja.my.id">Laundriaja</a>
+            <a href="https://ai-marketing.my.id">AI Marketing</a>
+        </nav>
     </header>
-    <div class="container">
-        <div class="portfolio-item">
-            <img src="project1.jpg" alt="Project 1">
-            <h3>Project 1</h3>
-            <p>Short description of project 1.</p>
-        </div>
-        <div class="portfolio-item">
-            <img src="project2.jpg" alt="Project 2">
-            <h3>Project 2</h3>
-            <p>Short description of project 2.</p>
-        </div>
-        <div class="portfolio-item">
-            <img src="project3.jpg" alt="Project 3">
-            <h3>Project 3</h3>
-            <p>Short description of project 3.</p>
-        </div>
+    <div class="portfolio">
+        <div class="portfolio-item"><h2>Project 1: Parfume</h2></div>
+        <div class="portfolio-item"><h2>Project 2: Laundriaja</h2></div>
+        <div class="portfolio-item"><h2>Project 3: AI Marketing</h2></div>
     </div>
-    <footer>
-        <p>&copy; 2026 Fahmi Studio. All rights reserved.</p>
-    </footer>
-    <script>
-        // Add JavaScript animations or interactions here
-    </script>
 </body>
 </html>
