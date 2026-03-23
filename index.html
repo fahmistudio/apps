@@ -1,65 +1,342 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fahmi Studio Portfolio</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f3f4f6;
-            margin: 0;
-            padding: 0;
-            transition: background-color 0.5s;
-        }
-        header {
-            background-color: #4a90e2;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            transition: background-color 0.5s;
-        }
-        nav a {
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-        nav a:hover {
-            background-color: #357ab8;
-            transform: scale(1.05);
-        }
-        .portfolio {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        .portfolio-item {
-            margin: 10px;
-            padding: 15px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-        .portfolio-item:hover {
-            transform: translateY(-5px);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fahmi Studio | IT Solution | Fullstack | AI Integration</title>
+  <style>
+    :root {
+      --bg: #0b1220;
+      --surface: #131d2f;
+      --primary: #4f8ef7;
+      --accent: #35d6a6;
+      --text: #e6ebf2;
+      --muted: #8fa3ba;
+      --shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+      background: radial-gradient(circle at top, #16203b 0%, #0a0f1d 45%, #060a14 100%);
+      color: var(--text);
+      min-height: 100vh;
+      transition: background 0.4s ease, color 0.4s ease;
+      line-height: 1.5;
+    }
+
+    .container {
+      width: min(100%, 1040px);
+      margin-inline: auto;
+      padding: 24px 18px 48px;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px 0 20px;
+      margin-bottom: 24px;
+      opacity: 0;
+      transform: translateY(-16px);
+      animation: fadeup 0.6s 0.2s forwards;
+    }
+
+    header h1 {
+      font-size: clamp(1.8rem, 2.15vw, 2.75rem);
+      margin-bottom: 10px;
+      letter-spacing: 0.04em;
+    }
+
+    header p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 720px;
+      margin-inline: auto;
+    }
+
+    .profile-card {
+      margin-top: 18px;
+      background: linear-gradient(135deg, rgba(79, 142, 247, 0.2), rgba(53, 214, 166, 0.12));
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 24px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(7px);
+    }
+
+    .profile-card .title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: #ffffffcc;
+      margin-bottom: 12px;
+    }
+
+    .profile-card .title span {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #a9c7ef;
+      letter-spacing: 0.03em;
+    }
+
+    .link-grid {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      margin-top: 24px;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeup 0.6s 0.4s forwards;
+    }
+
+    .link-card {
+      background: var(--surface);
+      border-radius: 18px;
+      border: 1px solid rgba(115, 143, 206, 0.22);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s;
+      position: relative;
+    }
+
+    .link-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(130deg, rgba(79, 142, 247, 0.32), rgba(53, 214, 166, 0.24));
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      pointer-events: none;
+    }
+
+    .link-card:hover {
+      transform: translateY(-4px) scale(1.008);
+      box-shadow: 0 28px 46px rgba(9, 19, 43, 0.52);
+      border-color: rgba(79, 142, 247, 0.6);
+    }
+
+    .link-card:hover::before {
+      opacity: 1;
+    }
+
+    .link-card a {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 110px;
+      padding: 18px;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .link-card h3 {
+      margin-bottom: 6px;
+      font-size: 1.1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .link-card p {
+      color: #b9c6dd;
+      font-size: 0.94rem;
+      margin-bottom: 12px;
+    }
+
+    .link-card .link {
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.9rem;
+      word-break: break-all;
+    }
+
+    .bio {
+      margin-top: 32px;
+      padding: 18px;
+      border-radius: 16px;
+      border: 1px solid rgba(88, 128, 196, 0.25);
+      background: rgba(10, 15, 28, 0.72);
+      box-shadow: inset 0 0 10px rgba(14, 24, 45, 0.42);
+      animation: fadeup 0.6s 0.55s forwards;
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    .bio strong { color: #50d9b1; }
+
+    .social {
+      margin-top: 26px;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      color: #b7c8e5;
+      font-size: 0.98rem;
+    }
+
+    .social a {
+      color: var(--muted);
+      text-decoration: none;
+      border: 1px solid rgba(109, 138, 180, 0.35);
+      background: rgba(25, 36, 66, 0.65);
+      border-radius: 999px;
+      padding: 8px 14px;
+      transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .social a:hover {
+      transform: translateY(-2px);
+      background: rgba(53, 214, 166, 0.22);
+      color: #e8f8ff;
+    }
+
+    .neon {
+      color: #8dc9ff;
+      text-shadow: 0 0 8px rgba(79, 142, 247, 0.85), 0 0 18px rgba(53, 214, 166, 0.65);
+    }
+
+    @keyframes fadeup {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 640px) {
+      .container { padding: 18px 12px 34px; }
+      .link-card a { min-height: 100px; padding: 14px; }
+      .social { gap: 10px; font-size: 0.88rem; }
+      header p { font-size: 0.97rem; }
+    }
+
+    .theme-toggle {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      background: radial-gradient(circle at top left, #5db5ff, #197fd5);
+      border: none;
+      border-radius: 999px;
+      color: #fff;
+      width: 52px;
+      height: 52px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 20px 30px rgba(3, 8, 20, 0.45);
+      transition: transform 0.25s ease;
+      display: grid;
+      place-items: center;
+      z-index: 11;
+    }
+
+    .theme-toggle:hover { transform: translateY(-2px) scale(1.03); }
+
+    .light-mode {
+      --bg: #f6f8fd;
+      --surface: #ffffff;
+      --primary: #2b78f0;
+      --accent: #178f6f;
+      --text: #0b172a;
+      --muted: #6b7f96;
+      background: radial-gradient(circle at top, #ffffff 0%, #f0f4ff 50%, #e1e8f8 100%);
+    }
+
+    .light-mode body { color: var(--text); }
+
+  </style>
 </head>
 <body>
+  <button class="theme-toggle" id="toggleTheme" aria-label="Toggle theme">☀️</button>
+
+  <main class="container">
     <header>
-        <h1>Welcome to Fahmi Studio Portfolio</h1>
-        <nav>
-            <a href="https://parfume.my.id">Parfume</a>
-            <a href="https://laundriaja.my.id">Laundriaja</a>
-            <a href="https://ai-marketing.my.id">AI Marketing</a>
-        </nav>
+      <h1 class="neon">Fahmi Studio • IT Solution • Fullstack Developer • AI Integration</h1>
+      <p>Selamat datang di halaman portfolio gaya biolink. Jelajahi project terbaik kami & solusi digital end-to-end untuk bisnis modern.</p>
+      <div class="profile-card">
+        <div class="title">
+          <h2>Fahmi Studio</h2>
+          <span>Digital System Architect</span>
+        </div>
+        <p>Spesialis membangun aplikasi bisnis berkinerja tinggi dengan penasaran teknologi AI, automasi, dan pengalaman pengguna yang elegan.</p>
+      </div>
     </header>
-    <div class="portfolio">
-        <div class="portfolio-item"><h2>Project 1: Parfume</h2></div>
-        <div class="portfolio-item"><h2>Project 2: Laundriaja</h2></div>
-        <div class="portfolio-item"><h2>Project 3: AI Marketing</h2></div>
-    </div>
+
+    <section class="link-grid">
+      <article class="link-card">
+        <a href="https://parfume.my.id" target="_blank" rel="noopener noreferrer">
+          <h3>1. Aplikasi Toko Parfum Refill</h3>
+          <p>Solusi manajemen inventori parfum, transaksi, dan pelanggan dengan interaksi nama brand/produk yang kuat.</p>
+          <span class="link">https://parfume.my.id</span>
+        </a>
+      </article>
+      <article class="link-card">
+        <a href="https://laundriaja.my.id" target="_blank" rel="noopener noreferrer">
+          <h3>2. Aplikasi Manajemen Laundry</h3>
+          <p>Platform laundry modern dengan sistem order, status pencucian, dan laporan bisnis terintegrasi.</p>
+          <span class="link">https://laundriaja.my.id</span>
+        </a>
+      </article>
+      <article class="link-card">
+        <a href="https://ai-marketing.my.id" target="_blank" rel="noopener noreferrer">
+          <h3>3. Aplikasi AI Marketing</h3>
+          <p>Hub AI untuk kampanye marketing, prediksi engagement, dan optimasi konten otomatis.</p>
+          <span class="link">https://ai-marketing.my.id</span>
+        </a>
+      </article>
+    </section>
+
+    <section class="bio">
+      <p><strong>Fahmi Studio</strong> berdedikasi menghadirkan solusi aplikasi fullstack yang mendongkrak produktivitas dan profit. Kombinasi back-end solid, front-end modern, dan rangkaian AI/ML mengoptimalkan alur kerja dari ide sampai deployment.</p>
+      <p class="social">
+        <a href="#" aria-label="Email">✉️ Email</a>
+        <a href="#" aria-label="LinkedIn">💼 LinkedIn</a>
+        <a href="#" aria-label="Portfolio">🌐 Website</a>
+      </p>
+    </section>
+  </main>
+
+  <script>
+    const themeButton = document.getElementById('toggleTheme');
+    const root = document.documentElement;
+
+    const setTheme = (lightMode) => {
+      if (lightMode) {
+        document.body.classList.add('light-mode');
+        themeButton.textContent = '🌙';
+        themeButton.title = 'Aktifkan mode gelap';
+      } else {
+        document.body.classList.remove('light-mode');
+        themeButton.textContent = '☀️';
+        themeButton.title = 'Aktifkan mode terang';
+      }
+      localStorage.setItem('fahmiThemeLight', lightMode ? '1' : '0');
+    };
+
+    themeButton.addEventListener('click', () => {
+      const isLight = document.body.classList.contains('light-mode');
+      setTheme(!isLight);
+    });
+
+    const saved = localStorage.getItem('fahmiThemeLight');
+    if (saved === '1') {
+      setTheme(true);
+    } else {
+      setTheme(false);
+    }
+
+    // WebGL-like pulse animation by JS for subtle dynamic shimmer
+    const gridCards = document.querySelectorAll('.link-card');
+    function pulse() {
+      gridCards.forEach((card, idx) => {
+        const t = Math.sin(Date.now() / 900 + idx * 0.8) * 0.025;
+        card.style.transform = `translateY(${t * -120}px) scale(${1 + Math.abs(t) * 0.02})`;
+      });
+      requestAnimationFrame(pulse);
+    }
+
+    requestAnimationFrame(pulse);
+  </script>
 </body>
 </html>
